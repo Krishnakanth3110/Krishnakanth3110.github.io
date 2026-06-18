@@ -16,7 +16,9 @@
     --accent:#38bdf8;
     --accent2:#f97316;
     --accent3:#a855f7;
+    --pink:#ec4899;
     --green:#34d399;
+    --grad-title:linear-gradient(135deg,var(--pink),var(--accent3));
     --grad1:linear-gradient(135deg,var(--accent),var(--accent3));
     --grad2:linear-gradient(135deg,var(--accent2),var(--accent3));
     --grad3:linear-gradient(135deg,var(--accent),var(--accent2));
@@ -123,8 +125,11 @@
   .hero-avatar-wrap:hover .hero-avatar{transform:scale(1.05);}
 
   section{padding:72px 0;}
-  .section-title{font-size:28px;font-weight:800;margin-bottom:8px;}
-  .section-sub{color:var(--text-dim);font-size:15px;margin-bottom:40px;}
+  .section-title{
+    font-size:32px;font-weight:800;margin-bottom:10px;text-align:center;
+    background:var(--grad-title);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .section-sub{color:var(--text-dim);font-size:15px;margin-bottom:44px;text-align:center;max-width:620px;margin-left:auto;margin-right:auto;}
   #skills, #education, #certifications{background:var(--bg-alt);}
 
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;}
@@ -161,38 +166,45 @@
   }
   .card-link:hover{text-decoration:underline;gap:10px;}
 
-  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;}
   .skill-card{
-    background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;
+    background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px 24px;
+    text-align:center;transition:transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .skill-card:hover{transform:translateY(-6px);}
+  .skill-card .icon{font-size:38px;margin-bottom:14px;display:block;}
+  .skill-card h3{font-size:17px;margin-bottom:12px;}
+  .skill-card .skill-text{color:var(--text-dim);font-size:13.5px;line-height:1.8;}
+  .skill-card:nth-child(4n+1){border-color:rgba(236,72,153,0.35);}
+  .skill-card:nth-child(4n+1):hover{border-color:var(--pink);box-shadow:0 20px 60px rgba(236,72,153,0.25);}
+  .skill-card:nth-child(4n+2){border-color:rgba(56,189,248,0.35);}
+  .skill-card:nth-child(4n+2):hover{border-color:var(--accent);box-shadow:var(--shadow-accent);}
+  .skill-card:nth-child(4n+3){border-color:rgba(168,85,247,0.35);}
+  .skill-card:nth-child(4n+3):hover{border-color:var(--accent3);box-shadow:var(--shadow-accent3);}
+  .skill-card:nth-child(4n){border-color:rgba(249,115,22,0.35);}
+  .skill-card:nth-child(4n):hover{border-color:var(--accent2);box-shadow:var(--shadow-accent2);}
+
+  .experience-timeline{position:relative;padding-left:36px;}
+  .experience-timeline::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--border);}
+  .job{
+    position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:28px 30px;margin-bottom:28px;
     transition:transform .3s, border-color .3s, box-shadow .3s;
   }
-  .skill-card:hover{transform:translateY(-5px);border-color:var(--accent3);box-shadow:var(--shadow-accent3);}
-  .skill-card .icon{font-size:26px;margin-bottom:10px;display:block;}
-  .skill-card h3{font-size:16px;margin-bottom:12px;}
-  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .pill{
-    font-size:12.5px;background:var(--bg);border:1px solid var(--border);
-    padding:5px 11px;border-radius:7px;color:var(--text-dim);transition:border-color .2s, color .2s;
-  }
-  .pill:hover{border-color:var(--accent);color:var(--accent);}
-
-  .job{
-    border-left:2px solid var(--border);padding-left:26px;position:relative;margin-bottom:36px;
-    transition:border-color .3s;
-  }
   .job:before{
-    content:'';position:absolute;left:-6px;top:4px;width:11px;height:11px;border-radius:50%;
-    background:var(--accent);box-shadow:0 0 0 4px rgba(56,189,248,0.15);
+    content:'';position:absolute;left:-36px;top:30px;width:13px;height:13px;border-radius:50%;
+    background:var(--grad-title);box-shadow:0 0 0 5px rgba(236,72,153,0.15);
     transition:box-shadow .3s;
   }
-  .job:hover{border-color:var(--accent);}
-  .job:hover:before{box-shadow:0 0 0 6px rgba(56,189,248,0.25);}
+  .job:hover{transform:translateY(-4px);border-color:var(--accent3);box-shadow:var(--shadow-accent3);}
+  .job:hover:before{box-shadow:0 0 0 7px rgba(236,72,153,0.25), 0 0 18px rgba(168,85,247,0.5);}
   .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
   .job-title{font-size:17px;font-weight:700;}
-  .job-company{color:var(--accent);font-weight:600;}
-  .job-meta{color:var(--text-dim);font-size:13px;}
-  .job ul{margin-top:10px;padding-left:20px;color:var(--text-dim);font-size:14px;}
-  .job li{margin-bottom:7px;}
+  .job-company{color:var(--text);font-weight:600;}
+  .job-meta{color:var(--pink);font-size:13px;font-weight:600;}
+  .job ul{list-style:none;margin-top:14px;padding-left:0;color:var(--text-dim);font-size:14px;}
+  .job li{position:relative;padding-left:22px;margin-bottom:9px;}
+  .job li:before{content:'▸';position:absolute;left:0;color:var(--pink);font-weight:700;}
   .job li b{color:var(--text);font-weight:600;}
 
   .edu-cert-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:30px;}
@@ -362,57 +374,43 @@
       <div class="skill-card">
         <span class="icon">💻</span>
         <h3>Programming</h3>
-        <div class="pill-row">
-          <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span>
-        </div>
+        <p class="skill-text">Python, SQL, R</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">🗄️</span>
         <h3>Databases &amp; Data Warehouses</h3>
-        <div class="pill-row">
-          <span class="pill">Snowflake</span><span class="pill">Databricks</span><span class="pill">MySQL</span><span class="pill">MS SQL Server</span><span class="pill">Oracle</span><span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">Anaplan</span>
-        </div>
+        <p class="skill-text">Snowflake, Databricks, MySQL, MS SQL Server, Oracle, MongoDB, PostgreSQL, Anaplan</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">📚</span>
         <h3>Libraries &amp; Frameworks</h3>
-        <div class="pill-row">
-          <span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">Matplotlib</span><span class="pill">Seaborn</span><span class="pill">Scikit-Learn</span><span class="pill">TensorFlow</span><span class="pill">PySpark</span>
-        </div>
+        <p class="skill-text">NumPy, Pandas, Matplotlib, Seaborn, Scikit-Learn, TensorFlow, PySpark</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">☁️</span>
         <h3>Cloud Platforms</h3>
-        <div class="pill-row">
-          <span class="pill">AWS Glue</span><span class="pill">S3</span><span class="pill">RDS</span><span class="pill">Redshift</span><span class="pill">Athena</span><span class="pill">QuickSight</span><span class="pill">SageMaker</span><span class="pill">Azure</span><span class="pill">Microsoft Fabric</span>
-        </div>
+        <p class="skill-text">AWS Glue, S3, RDS, Redshift, Athena, QuickSight, SageMaker, Azure, Microsoft Fabric</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">📊</span>
         <h3>Data Visualization</h3>
-        <div class="pill-row">
-          <span class="pill">Power BI (DAX, Power Query)</span><span class="pill">Tableau</span><span class="pill">Excel</span><span class="pill">Alteryx</span><span class="pill">Looker</span>
-        </div>
+        <p class="skill-text">Power BI (DAX, Power Query), Tableau, Excel, Alteryx, Looker</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">⚙️</span>
         <h3>Methodologies &amp; Tools</h3>
-        <div class="pill-row">
-          <span class="pill">Agile</span><span class="pill">Waterfall</span><span class="pill">Jira</span><span class="pill">Confluence</span><span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">Power Automate</span><span class="pill">VBA</span>
-        </div>
+        <p class="skill-text">Agile, Waterfall, Jira, Confluence, Git, GitHub, Power Automate, VBA</p>
       </div>
 
       <div class="skill-card">
         <span class="icon">📈</span>
         <h3>Data Analysis &amp; Statistics</h3>
-        <div class="pill-row">
-          <span class="pill">EDA</span><span class="pill">A/B Testing</span><span class="pill">Time Series Analysis</span><span class="pill">ETL/ELT</span><span class="pill">Data Modeling</span>
-        </div>
+        <p class="skill-text">EDA, A/B Testing, Time Series Analysis, ETL/ELT, Data Modeling</p>
       </div>
 
     </div>
@@ -424,6 +422,7 @@
     <h2 class="section-title">Professional Experience</h2>
     <p class="section-sub">3+ years across contract, academic, and enterprise data roles.</p>
 
+    <div class="experience-timeline">
     <div class="job">
       <div class="job-head">
         <div><span class="job-title">Data Analyst Engineer</span> <span class="job-company">— Walmart (Contract)</span></div>
@@ -475,6 +474,7 @@
       <ul>
         <li>Developed a healthcare analytics system using Python, SQL, and machine learning for predictive modeling, patient risk analysis, and clinical decision support.</li>
       </ul>
+    </div>
     </div>
 
   </div>
